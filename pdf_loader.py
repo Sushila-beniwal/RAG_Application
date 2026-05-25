@@ -321,10 +321,10 @@ rag_retriever=RAGRetriever(vectorstore,embedding_manager)
 
 
 import os
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 
-print(os.getenv("GROQ_API_KEY"))
+#print(os.getenv("GROQ_API_KEY"))
 
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
