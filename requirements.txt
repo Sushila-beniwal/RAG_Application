@@ -6,7 +6,7 @@ langchain-google-genai
 chromadb
 pytesseract
 pillow
-PyMuPDF
+pymupdf
 pdfplumber
 python-dotenv
 langchain-core
