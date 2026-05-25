@@ -47,7 +47,8 @@ def initialize():
 
     llm = GroqLLM(
         model_name="llama-3.1-8b-instant",
-        api_key=os.getenv("GROQ_API_KEY")
+        #api_key=os.getenv("GROQ_API_KEY")
+        api_key = st.secrets["GROQ_API_KEY"]
     )
 
     return embedding_manager, vectorstore, retriever, llm
