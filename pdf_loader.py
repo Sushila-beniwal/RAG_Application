@@ -1,5 +1,4 @@
 import os
-import streamlit as st
 from langchain_community.document_loaders import PyPDFLoader, PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from pathlib import Path
@@ -321,10 +320,10 @@ rag_retriever=RAGRetriever(vectorstore,embedding_manager)
 
 
 import os
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
-#print(os.getenv("GROQ_API_KEY"))
+print(os.getenv("GROQ_API_KEY"))
 
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
@@ -340,7 +339,7 @@ class GroqLLM:
             api_key: Groq API key (or set GROQ_API_KEY environment variable)
         """
         self.model_name = model_name
-        self.api_key = api_key or st.secrets["GROQ_API_KEY"] #os.environ.get("GROQ_API_KEY")
+        self.api_key = api_key or os.environ.get("GROQ_API_KEY")
         
         if not self.api_key:
             raise ValueError("Groq API key is required. Set GROQ_API_KEY environment variable or pass api_key parameter.")
@@ -421,8 +420,7 @@ Answer:"""
 
 # Initialize Groq LLM (you'll need to set GROQ_API_KEY environment variable)
 try:
-    #groq_llm = GroqLLM(api_key=os.getenv("GROQ_API_KEY"))
-    groq_llm = GroqLLM(api_key =st.secrets["GROQ_API_KEY"])
+    groq_llm = GroqLLM(api_key=os.getenv("GROQ_API_KEY"))
     print("Groq LLM initialized successfully!")
 except ValueError as e:
     print(f"Warning: {e}")
@@ -437,9 +435,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 ### Initialize the Groq LLM (set your GROQ_API_KEY in environment)
-#groq_api_key = os.getenv("GROQ_API_KEY")
-groq_api_key =st.secrets["GROQ_API_KEY"]
-
+groq_api_key = os.getenv("GROQ_API_KEY")
 
 llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.1-8b-instant",temperature=0.1,max_tokens=1024)
 
